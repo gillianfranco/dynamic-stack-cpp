@@ -10,7 +10,7 @@ struct Node{
 
 class dynamicStack{
     private:
-    Node* NoTopo;
+    Node* TopNode;
 
     public:
     dynamicStack();
