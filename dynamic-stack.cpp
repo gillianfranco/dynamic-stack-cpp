@@ -37,7 +37,6 @@ void dynamicStack::push(TipoItem item){
         NewNode->valor = item;
         NewNode->proximo = TopNode;
         TopNode = NewNode;
-        delete NewNode;
     }else{
         cout << "A pilha esta cheia! Nao e' possivel inserir mais elementos." << endl;
     }
