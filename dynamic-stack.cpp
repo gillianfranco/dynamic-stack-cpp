@@ -64,6 +64,15 @@ void dynamicStack::print(){
         TempNode = TempNode->proximo;
     }
     cout << endl;
+    delete TempNode;
 }
 
-int dynamicStack::size(){}
+int dynamicStack::size(){
+    Node* TempNode = TopNode;
+    int size = 0;
+    while(TempNode != NULL){
+        size++;
+        TempNode = TempNode->proximo;
+    }
+    return size;
+}
