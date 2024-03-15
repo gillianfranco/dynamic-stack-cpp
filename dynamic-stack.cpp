@@ -7,7 +7,14 @@ dynamicStack::dynamicStack(){
     TopNode = NULL; // Faz com que a instância privada receba valor nulo
 }
 
-dynamicStack::~dynamicStack(){}
+dynamicStack::~dynamicStack(){
+    Node* TempNode;
+    while(TopNode != NULL){
+        TempNode = TopNode;
+        TopNode = TopNode->proximo;
+        delete TempNode;
+    }
+}
 
 bool dynamicStack::isFull(){
     Node* NewNode; // Aponta para uma local onde será armazenado uma instância da estrutura Node
@@ -24,7 +31,39 @@ bool dynamicStack::isEmpty(){
     return (TopNode == NULL); // Se nó que está no topo da pilha for nulo, quer dizer que a lista está vazia
 }
 
-void dynamicStack::push(TipoItem item){}
-TipoItem dynamicStack::pop(){}
-void dynamicStack::print(){}
+void dynamicStack::push(TipoItem item){
+    if(!isFull()){
+        Node* NewNode = new Node;
+        NewNode->valor = item;
+        NewNode->proximo = TopNode;
+        TopNode = NewNode;
+        delete NewNode;
+    }else{
+        cout << "A pilha esta cheia! Nao e' possivel inserir mais elementos." << endl;
+    }
+}
+
+TipoItem dynamicStack::pop(){
+    if(!isEmpty()){
+        Node* TempNode = TopNode;
+        TipoItem item = TempNode->valor;
+        TopNode = TopNode->proximo;
+        delete TempNode;
+        return item;
+    }else{
+        cout << "A pilha já esta vazia! Nao ha elemento para remover." << endl;
+        return 0;
+    }
+}
+
+void dynamicStack::print(){
+    Node* TempNode = TopNode;
+    cout << "Elementos: ";
+    while(TempNode != NULL){
+        cout << TempNode->valor << endl;
+        TempNode = TempNode->proximo;
+    }
+    cout << endl;
+}
+
 int dynamicStack::size(){}
